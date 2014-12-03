@@ -1,0 +1,39 @@
+{
+    "manifest_version": 2, // Версия манифеста. Обязательная строка
+    "name": "SiteTester", // Название расширения
+    "description": "Проверка сайта", // Описание расширения
+    "version": "1.0", // Версия расширения
+    // Указываем иконки. Требуются именно такие размеры
+    "icons": {
+        "128": "img/ok.png"
+    },
+
+    // Запрашиваем доступы для расширения.
+    "permissions": [
+        "http://*/*",
+        "https://*/*",
+        "unlimited_storage",
+        "notifications",
+        "cookies",
+        "tabs",
+        "webNavigation"
+    ],
+
+    // Указываем страничку с выводом истории и управлением записями. 
+    // Располагается рядом с омнибоксом
+    "browser_action": {
+        "default_title": "Аудитор",
+        "default_popup": "popup.html" // Страничка с всплывашкой
+    },
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        "js": [
+            "js/libs/jquery-1.10.1.min.js",
+            "js/background.js"
+        ],
+        "css": ["css/background.css"]
+    }]
+}
